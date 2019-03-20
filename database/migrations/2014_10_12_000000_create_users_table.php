@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
+     * Elimina la tabla cuando se deshace la migracion
      * @return void
      */
     public function down()
