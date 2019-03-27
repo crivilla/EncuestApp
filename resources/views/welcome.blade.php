@@ -9,12 +9,12 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
-        <!-- Styles -->
+        <!-- Styles --> <!--paleta: 222A68 , 654597 , 7067CF , 78CAD2 , A1D2CE -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
+                background-color: #ffffff;
+                color: #222A68;
+                font-family: Arial, Helvetica, sans-serif;
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
@@ -49,7 +49,7 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: #654597;
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;
@@ -82,8 +82,10 @@
             <div class="content">
                 <div class="title m-b-md">
                     EncuestApp
-                    <h1> Una herramienta de creación de encuestas para ofrecer a los pacientes y usuarios de sus servicios
-                        médico-sanitarios. </h1>
+                </div>
+                <div>
+                    <h2> Una herramienta de creación de encuestas para ofrecer a
+                        los pacientes y usuarios de sus servicios médico-sanitarios. </h2>
                 </div>
 
                 <div class="links">
@@ -93,12 +95,12 @@
                     <a href="https://laravel-news.com"> Historial </a>
                     <a href="https://blog.laravel.com"> Resultados </a>
 
-                    <h2> Diseñe cuestionarios personalizados y obtenga información útil sobre el grado de satisfacción de sus pacientes.  </h2>
+                    <h3> Diseñe cuestionarios personalizados y obtenga información útil sobre el grado de satisfacción de sus pacientes.  </h3>
 
                 </div>
                 <div aling="right">
-                   <h1> Desarrollo de la aplicación por Ana Caamaño Cundins y Celia Rivilla Piñango. <h1/>
-                       <h2> ETSII Universidad de Sevilla. 2019 <h2/>
+                   <h4> Desarrollo de la aplicación por Ana Caamaño Cundins y Celia Rivilla Piñango. <h1/>
+                       <h4> ETSII Universidad de Sevilla. 2019 <h2/>
 
                 </div>
 
