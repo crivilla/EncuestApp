@@ -16,6 +16,10 @@ class CreateEncuestasTable extends Migration
         Schema::create('encuestas', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('titulo');
+            $table->dateTime('fechainicio');
+            $table->dateTime('fechafinal');
+            $table->enum('Ambito',['ProfesionalesMedicos', 'Instalaciones','Servcios','PersonalAAdministrativo']);
         });
     }
 
