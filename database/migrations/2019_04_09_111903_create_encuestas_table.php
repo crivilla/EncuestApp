@@ -19,7 +19,9 @@ class CreateEncuestasTable extends Migration
             $table->string('titulo');
             $table->dateTime('fechainicio');
             $table->dateTime('fechafinal');
-            $table->enum('Ambito',['ProfesionalesMedicos', 'Instalaciones','Servcios','PersonalAAdministrativo']);
+            $stable->foreign('ambito_id')->references('id')->on('ambito');
+
+            //$table->enum('Ambito',['ProfesionalesMedicos', 'Instalaciones','Servcios','PersonalAAdministrativo']);
         });
     }
 

@@ -18,14 +18,14 @@ class CreateMedicosTable extends Migration
             $table->timestamps();
             $table->string('numcolegiado');
             $table->string('especialidad');
-
-            $table->string('name');
+            $table->string('nombre');
             $table->string('apellidos');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $stable->foreign('encuesta_id')->references('id')->on('encuestas');
         });
     }
 

@@ -17,7 +17,6 @@ class CreatePacientesTable extends Migration
             $table->increments('id');
             $table->string('DNI');
             $table->dateTime('fechanacimiento');
-
             $table->string('name');
             $table->string('apellidos');
             $table->string('email')->unique();
