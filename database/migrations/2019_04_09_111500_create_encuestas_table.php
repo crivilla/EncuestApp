@@ -19,9 +19,10 @@ class CreateEncuestasTable extends Migration
             $table->string('titulo');
             $table->dateTime('fechainicio');
             $table->dateTime('fechafinal');
-            $stable->foreign('ambito_id')->references('id')->on('ambito');
+            $table->unsignedInteger('ambito_id');
+            $table->foreign('ambito_id')->references('id')->on('ambitos');
 
-            //$table->enum('Ambito',['ProfesionalesMedicos', 'Instalaciones','Servcios','PersonalAAdministrativo']);
+            /*$table->enum('Ambito',['ProfesionalesMedicos', 'Instalaciones','Servcios','PersonalAAdministrativo']); */
         });
     }
 

@@ -66,8 +66,8 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('/especialidades') }}">
-                                        Especialidades
+                                    <a href="{{ url('/ambitos') }}">
+                                        Ámbitos
                                     </a>
                                 </li>
 
@@ -78,8 +78,8 @@
                                 </li>
 
                                 <li>
-                                    <a href="{{ url('/citas') }}">
-                                        Citas
+                                    <a href="{{ url('/encuestas') }}">
+                                        Encuestas
                                     </a>
                                 </li>
                                 <li>

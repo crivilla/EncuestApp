@@ -8,16 +8,16 @@
                     <div class="panel-heading">Crear medico</div>
 
                     <div class="panel-body">
-                        @include('flash::message')  //adaptar a nuestros atributos
+                        @include('flash::message')
 
                         {!! Form::open(['route' => 'medicos.store']) !!}
                         <div class="form-group">
-                            {!! Form::label('name', 'Nombre del medico') !!}
-                            {!! Form::text('name',null,['class'=>'form-control', 'required', 'autofocus']) !!}
+                            {!! Form::label('nombre', 'Nombre del medico') !!}
+                            {!! Form::text('nombre',null,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('surname', 'Apellidos del medico') !!}
-                            {!! Form::text('surname',null,['class'=>'form-control', 'required']) !!}
+                            {!! Form::label('apellidos', 'Apellidos del medico') !!}
+                            {!! Form::text('apellidos',null,['class'=>'form-control', 'required']) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('numcolegiado', 'Número de colegiado del medico') !!}
@@ -35,7 +35,6 @@
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 
                         {!! Form::close() !!}
-
 
                     </div>
                 </div>

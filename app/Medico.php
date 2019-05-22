@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Medico extends Model
 {
     //constructor
-    protected $fillable = ['name', 'surname', 'encuesta_id'];
+    protected $fillable = ['nombre', 'apellidos', 'especialidad', 'numcolegiado', 'email'];
 
     /*
     //devuelve la encuesta que esta relacionada con el medico
