@@ -23,8 +23,8 @@ class CreateMedicosTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
-            $table->unsignedInteger('encuesta_id');
-            $table->foreign('encuesta_id')->references('id')->on('encuestas');
+            //$table->unsignedInteger('encuesta_id');
+            //$table->foreign('encuesta_id')->references('id')->on('encuestas');
         });
     }
 
