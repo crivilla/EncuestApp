@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Pregunta;
 use Illuminate\Http\Request;
+use App\Encuesta;
 
 class PreguntaController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +16,8 @@ class PreguntaController extends Controller
      */
     public function index()
     {
-        //
+        $preguntas = Pregunta::all();
+        return view('preguntas/index',['preguntas'=>$preguntas]);
     }
 
     /**
@@ -24,62 +27,66 @@ class PreguntaController extends Controller
      */
     public function create()
     {
-        //
+        //Listar todos los tipos de preguntas que existen para que el usuario pueda elegir
+
+        $encuestas = Encuesta::all()->pluck('titulo');
+        return view('preguntas/create', ['encuestas'=>$encuestas]); //manda array a la vista**/
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'enunciado' => 'required|max:255',
+            'enunciado' => 'required|max:255',
+            'titulo' => 'required|exists:encuestas, titulo'
+        ]);
+
+        $pregunta = new Pregunta($request->all());
+        $pregunta->save();
+
+
+        flash('Pregunta creada correctamente');
+
+        return redirect()->route('preguntas.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Pregunta  $pregunta
-     * @return \Illuminate\Http\Response
-     */
     public function show(Pregunta $pregunta)
     {
-        //
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Pregunta  $pregunta
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Pregunta $pregunta)
+    public function edit($id)
     {
-        //
+        $pregunta = Pregunta::find($id);
+        $encuestas = Encuesta::all()->pluck('titulo','id', 'ambito_id', 'fechainicio', 'fechafinal');
+        return view('preguntas/edit',['pregunta'=> $pregunta, 'encuestas'=>$encuestas ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Pregunta  $pregunta
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Pregunta $pregunta)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'enunciado' => 'required|max:255',
+            'enunciado' => 'required|max:255',
+            'titulo' => 'required|exists:encuestas'
+
+        ]);
+
+        $pregunta = Pregunta::find($id);
+        $pregunta-> fill($request->all());
+
+        $pregunta->save();
+
+        flash('Pregunta modificada correctamente');
+
+        return redirect()->route('preguntas.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Pregunta  $pregunta
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Pregunta $pregunta)
+    public function destroy($id)
     {
-        //
+        $pregunta = Pregunta::find($id);
+        $pregunta->delete();
+        flash('Pregunta borrada correctamente');
+        return redirect()->route('preguntas.index');
     }
 }

@@ -21,7 +21,7 @@ Auth::routes();
 Route::resource('medicos', 'MedicoController'); //solamente accesibles por aquellos usuarios autenticados
 Route::resource('encuestas', 'EncuestaController');
 Route::resource('ambitos', 'AmbitoController');
-
+Route::resource('preguntas', 'PreguntaController');
 
 
 

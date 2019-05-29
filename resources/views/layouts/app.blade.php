@@ -82,6 +82,14 @@
                                         Encuestas
                                     </a>
                                 </li>
+
+                                <li>
+                                    <a href="{{ url('/preguntas') }}">
+                                        Preguntas
+                                    </a>
+                                </li>
+
+
                                 <li>
                                     <a href="{{ url('/logout') }}"
                                        onclick="event.preventDefault();

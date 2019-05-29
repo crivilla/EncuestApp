@@ -10,7 +10,8 @@
                     <div class="panel-body">
                         @include('flash::message')
 
-                        {!! Form::model($medico, [ 'route' => ['encuestas.update',$encuesta->id], 'method'=>'PUT']) !!}
+                        {!! Form::model($encuesta, [ 'route' => ['encuestas.update',$encuesta->id], 'method'=>'PUT']) !!}
+
 
                         <div class="form-group">
                             {!! Form::label('titulo', 'Titulo de la encuesta') !!}
@@ -18,22 +19,25 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('fechainicio', 'Fecha de inicio de la encuesta') !!}
-                            {!! Form::text('fechainicio',$encuesta->fechainicio,['class'=>'form-control', 'required']) !!}
+                            <input type="datetime-local" id="fecha_hora" name="fechainicio" class="form-control" value="{{Carbon\Carbon::parse($encuesta->fechainicio)->format('Y-m-d\Th:i')}}" />
+
                         </div>
                         <div class="form-group">
                             {!! Form::label('fechafinal', 'Fecha final de la encuesta') !!}
-                            {!! Form::text('fechafinal',$encuesta->fechafinal,['class'=>'form-control', 'required']) !!}
+                            <input type="datetime-local" id="fecha_hora" name="fechafinal" class="form-control" value="{{Carbon\Carbon::parse($encuesta->fechafinal)->format('Y-m-d\Th:i')}}" />
                         </div>
+
                         <div class="form-group">
                             {!!Form::label('ambito_id', 'Ámbito de la encuesta') !!}
                             <br>
-                            {!! Form::select('ambito_id', $encuesta->ambito_id, ['class' => 'form-control', 'required']) !!}
+                            {!! Form::select('ambito_id', $ambitos, ['class' => 'form-control', 'required']) !!}
                         </div>
 
 
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 
                         {!! Form::close() !!}
+
                     </div>
                 </div>
             </div>

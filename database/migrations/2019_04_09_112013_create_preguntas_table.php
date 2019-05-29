@@ -17,6 +17,8 @@ class CreatePreguntasTable extends Migration
             $table->increments('id');
             $table->string('enunciado');
             $table->enum('tipo',['valoracion0a10', 'valoracion0a5']);
+            $table->unsignedInteger('encuesta_id');
+            $table->foreign('titulo')->references('titulo')->on('encuestas');
         });
     }
 

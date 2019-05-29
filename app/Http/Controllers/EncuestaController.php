@@ -49,8 +49,8 @@ class EncuestaController extends Controller
 
         $this->validate($request, [
             'titulo' => 'required|max:255',
-            'fechainicio' => 'required|max:255', //?????? fecha:   required|date|after:now??
-            'fechafinal' => 'required|date', //?????? fecha:    required|date|after:now??
+            'fechainicio' => 'required|date|after:now', //?????? fecha
+            'fechafinal' => 'required|date|after:now',
             'ambito_id' => 'required|exists:ambitos,id'
         ]);
 
@@ -84,7 +84,6 @@ class EncuestaController extends Controller
      */
     public function edit($id)
     {
-        //
         $encuesta = Encuesta::find($id);
         $ambitos = Ambito::all()->pluck('name','id');
         return view('encuestas/edit',['encuesta'=> $encuesta, 'ambitos'=>$ambitos ]);

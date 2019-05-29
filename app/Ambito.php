@@ -10,10 +10,10 @@ class Ambito extends Model
     protected $fillable = ['name'];
 
 
-    //devuelve todas las encuestas que tiene un ambita
+    //devuelve todas las encuestas que tiene un ambita   (!!!!!)
     public function encuestas()
     {
-        return $this->hasMany('App\Encuesta');
+        return $this->hasMany('App\Encuesta'); // al revés
     }
 
 }

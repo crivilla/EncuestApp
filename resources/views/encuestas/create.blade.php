@@ -17,11 +17,13 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('fechainicio', 'Fecha de inicio de la encuesta') !!}
-                            {!! Form::text('fechainicio',null,['class'=>'form-control', 'required']) !!}
+                             <input type="datetime-local" id="fecha_hora" name="fechainicio" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" />
+
                         </div>
                         <div class="form-group">
                             {!! Form::label('fechafinal', 'Fecha final de la encuesta') !!}
-                            {!! Form::text('fechafinal',null,['class'=>'form-control', 'required']) !!}
+                            <input type="datetime-local" id="fecha_hora" name="fechafinal" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" />
+
                         </div>
 
                         <div class="form-group">
@@ -29,6 +31,7 @@
                             <br>
                             {!! Form::select('ambito_id', $ambitos, ['class' => 'form-control', 'required']) !!}
                         </div>
+
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 
                         {!! Form::close() !!}
