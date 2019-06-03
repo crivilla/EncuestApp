@@ -72,12 +72,6 @@
                                 </li>
 
                                 <li>
-                                    <a href="{{ url('/pacientes') }}">
-                                        Pacientes
-                                    </a>
-                                </li>
-
-                                <li>
                                     <a href="{{ url('/encuestas') }}">
                                         Encuestas
                                     </a>
@@ -95,6 +89,11 @@
                                     </a>
                                 </li>
 
+                                <li>
+                                    <a href="{{ url('/pacientes') }}">
+                                        Pacientes
+                                    </a>
+                                </li>
 
                                 <li>
                                     <a href="{{ url('/logout') }}"
