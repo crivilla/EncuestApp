@@ -16,10 +16,10 @@ class Pregunta extends Model
         return $this->belongsTo('App\Encuesta');
     }
 
-    //devuelve todas las preguntas que tiene una encuesta
-    public function preguntas()
+    //devuelve todas las respuestas que tiene una pregunta
+    public function respuestas()
     {
-        return $this->hasMany('App\Pregunta');
+        return $this->hasMany('App\Respuesta');
     }
 
 }

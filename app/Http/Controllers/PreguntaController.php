@@ -56,7 +56,7 @@ class PreguntaController extends Controller
         $this->validate($request, [
             'enunciado' => 'required|max:255',
             'tipo' => 'required|max:255',
-            'encuesta_id' => 'required|exists:encuestas, id'
+            'encuesta_id' => 'required|exists:encuestas,id'
         ]);
 
         $pregunta = Pregunta::find($id);

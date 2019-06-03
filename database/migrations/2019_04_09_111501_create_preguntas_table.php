@@ -17,6 +17,7 @@ class CreatePreguntasTable extends Migration
             $table->foreign('encuesta_id')->references('id')->on('encuestas')->onDelete('cascade');
 
         });
+
     }
 
     public function down()

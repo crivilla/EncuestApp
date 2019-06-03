@@ -24,7 +24,6 @@ class EncuestaController extends Controller
         //Listar todos los ambitos que existen para que un usuario pueda elegir
         $ambitos = Ambito::all()->pluck('name','id'); //array que asocia id con ambito
         return view('encuestas/create', ['ambitos'=>$ambitos]); //manda array a la vista
-
     }
 
     public function store(Request $request)
