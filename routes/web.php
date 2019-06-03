@@ -20,9 +20,9 @@ Auth::routes();
 //existe una entidad/recurso Encuesta que es atendida por un controlador concreto (EncuestaController)
 Route::resource('medicos', 'MedicoController'); //solamente accesibles por aquellos usuarios autenticados
 Route::resource('encuestas', 'EncuestaController');
-Route::resource('ambitos', 'AmbitoController');
+Route::resource('ambitos', 'AmbitoController'); //****
 Route::resource('preguntas', 'PreguntaController');
-
+Route::resource('pacientes', 'PacienteController');
 
 
 

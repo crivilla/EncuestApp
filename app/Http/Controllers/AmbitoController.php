@@ -24,11 +24,7 @@ class AmbitoController extends Controller
         return view('ambitos/index',['ambitos'=>$ambitos]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('ambitos/create');

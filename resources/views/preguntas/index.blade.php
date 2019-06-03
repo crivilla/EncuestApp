@@ -30,7 +30,7 @@
                                 <tr>
                                     <td>{{ $pregunta->enunciado }}</td>
                                     <td>{{ $pregunta->tipo }}</td>
-                                    <td>{{ $pregunta->encuesta_id->titulo}}</td> /**/
+                                    <td>{{ $pregunta->encuesta->titulo}}</td>
 
                                     <td>
                                         {!! Form::open(['route' => ['preguntas.edit',$pregunta->id], 'method' => 'get']) !!}
@@ -38,6 +38,7 @@
                                         {!! Form::close() !!}
                                     </td>
                                     <td>
+
                                         {!! Form::open(['route' => ['preguntas.destroy',$pregunta->id], 'method' => 'delete']) !!}
                                         {!!   Form::submit('Borrar', ['class'=> 'btn btn-danger' ,'onclick' => 'if(!confirm("¿Está seguro?"))event.preventDefault();'])!!}
                                         {!! Form::close() !!}

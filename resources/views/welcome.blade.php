@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>EncuestApp</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -89,11 +89,10 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://nova.laravel.com"> Inicio </a>
-                    <a href="https://laravel.com/docs"> Crear encuesta</a>
-                    <a href="https://laracasts.com"> Activas </a>
-                    <a href="https://laravel-news.com"> Historial </a>
-                    <a href="https://blog.laravel.com"> Resultados </a>
+                    <a href="https://appmazinghealth.test/encuestas"> Encuesta </a>
+                    <a href="https://appmazinghealth.test/medicos"> Médicos</a>
+                    <a href="https://appmazinghealth.test/ambitos"> Ámbitos </a>
+                    <a href="https://appmazinghealth.test/pacientes"> Pacientes </a>
 
                     <h3> Diseñe cuestionarios personalizados y obtenga información útil sobre el grado de satisfacción de sus pacientes.  </h3>
 

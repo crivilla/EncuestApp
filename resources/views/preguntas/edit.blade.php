@@ -19,9 +19,10 @@
                         </div>
 
                         <div class="form-group">
-                            {!!Form::label('encuesta_id', 'Encuesta a la que pertenece la pregunta') !!}
+                            {!!Form::label('encuesta_id', 'Encuesta de la que forma parte') !!}
                             <br>
                             {!! Form::select('encuesta_id', $encuestas, ['class' => 'form-control', 'required']) !!}
+
                         </div>
 
                         <div class="form-group">
