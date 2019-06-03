@@ -29,11 +29,9 @@ class RespuestaController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'titulo' => 'required|max:255',
-            'fechainicio' => 'required|date|after:now',
-            'fechafinal' => 'required|date|after:now',
-            'pregunta_id' => 'required|exists:preguntas,id'
+        $this->validate($request, [/*
+            'valoracion' => 'required|max:255',
+            'pregunta_id' => 'required|exists:preguntas,id'*/
         ]);
 
         $respuesta = new Respuesta($request->all());
@@ -58,11 +56,9 @@ class RespuestaController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'titulo' => 'required|max:255',
-            'fechainicio' => 'required|date',
-            'fechafinal' => 'required|date',
-            'pregunta_id' => 'required|exists:preguntas,id'
+        $this->validate($request, [/*
+            'valoracion' => 'required|max:255',
+            'pregunta_id' => 'required|exists:preguntas,id' */
         ]);
 
         $respuesta = Respuesta::find($id);

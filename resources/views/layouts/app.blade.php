@@ -89,6 +89,12 @@
                                     </a>
                                 </li>
 
+                                <li>
+                                    <a href="{{ url('/respuestas') }}">
+                                        Respuestas
+                                    </a>
+                                </li>
+
 
                                 <li>
                                     <a href="{{ url('/logout') }}"
