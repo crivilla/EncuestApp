@@ -4,82 +4,82 @@ namespace App\Http\Controllers;
 
 use App\Respuesta;
 use Illuminate\Http\Request;
+use App\Pregunta;
+
 
 class RespuestaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        $respuestas = Respuesta::all();
+        return view('respuestas/index',['respuestas'=>$respuestas]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        //Listar todos los preguntas que existen para que un usuario pueda elegir
+        $preguntas = Pregunta::all()->pluck('enunciado','id'); //array que asocia id con pregunta
+        return view('respuestas/create', ['preguntas'=>$preguntas]); //manda array a la vista
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'titulo' => 'required|max:255',
+            'fechainicio' => 'required|date|after:now',
+            'fechafinal' => 'required|date|after:now',
+            'pregunta_id' => 'required|exists:preguntas,id'
+        ]);
+
+        $respuesta = new Respuesta($request->all());
+        $respuesta->save();
+
+        flash('Respuesta creada correctamente');
+        return redirect()->route('respuestas.index');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Respuesta  $respuesta
-     * @return \Illuminate\Http\Response
-     */
     public function show(Respuesta $respuesta)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Respuesta  $respuesta
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Respuesta $respuesta)
+    public function edit($id)
     {
-        //
+        $respuesta = Respuesta::find($id);
+        $preguntas = Pregunta::all()->pluck('enunciado','id');
+        return view('respuestas/edit',['respuesta'=> $respuesta, 'preguntas'=>$preguntas ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Respuesta  $respuesta
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Respuesta $respuesta)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'titulo' => 'required|max:255',
+            'fechainicio' => 'required|date',
+            'fechafinal' => 'required|date',
+            'pregunta_id' => 'required|exists:preguntas,id'
+        ]);
+
+        $respuesta = Respuesta::find($id);
+        $respuesta-> fill($request->all());
+
+        $respuesta->save();
+
+        flash('Respuesta modificada correctamente');
+
+        return redirect()->route('respuestas.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Respuesta  $respuesta
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Respuesta $respuesta)
+    public function destroy($id)
     {
-        //
+        $respuesta = Respuesta::find($id);
+        $respuesta->delete();
+        flash('Respuesta borrada correctamente');
+        return redirect()->route('respuestas.index');
     }
 }
