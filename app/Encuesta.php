@@ -40,8 +40,9 @@ class Encuesta extends Model
     {
         return $this->hasMany('App\Pregunta');
     }
+}
 
-    //-------------------------------------------------------------
+    /*
 
     public function getUpdatedAtDiffAttribute() {
         return Helper::createCarbonDiffForHumans($this->updated_at);
@@ -55,14 +56,14 @@ class Encuesta extends Model
     public function getShareableUrlAttribute() {
         return 'https://dptole.ngrok.io/laravel/s/' . $this->shareable_link;
     }
-    /************************************************/
+    /************************************************
     public static function getAllByOwner($user_id) {
         return Encuesta::where('user_id', '=', $user_id)
             ->orderBy('updated_at', 'desc')
             ->paginate(5)
             ;
     }
-    /************************************************/
+    /************************************************
     public static function getByOwner($uuid, $user_id) {
         return (
         $encuestas = Encuesta::where('user_id', '=', $user_id)
@@ -75,14 +76,14 @@ class Encuesta extends Model
             : null
             ;
     }
-    /************************************************/
+    /************************************************
     public static function deleteByOwner($uuid, $user_id) {
         return Encuesta::where([
             'user_id' => $user_id,
             'uuid' => $uuid
         ])->delete();
     }
-    /************************************************/
+    /************************************************
     //------
 
 
@@ -107,7 +108,7 @@ class Encuesta extends Model
         $encuesta->save();
         return Encuesta::ERR_RUN_SURVEY_OK;
     }
-    /************************************************/
+    /************************************************
     const ERR_PAUSE_SURVEY_OK = 0;
     const ERR_PAUSE_SURVEY_NOT_FOUND = 1;
     const ERR_PAUSE_SURVEY_INVALID_STATUS = 2;
@@ -125,7 +126,7 @@ class Encuesta extends Model
         $encuesta->save();
         return Encuesta::ERR_PAUSE_SURVEY_OK;
     }
-    /************************************************/
+    /************************************************
     public static function getAvailables() {
         return DB::table('surveys')
             ->select('surveys.*', 'users.name as author_name')
@@ -134,7 +135,7 @@ class Encuesta extends Model
             ->get()
             ;
     }
-    /************************************************/
+    /************************************************
     const ERR_IS_RUNNING_SURVEY_OK = 0;
     const ERR_IS_RUNNING_SURVEY_NOT_FOUND = 1;
     const ERR_IS_RUNNING_SURVEY_NOT_RUNNING = 2;
@@ -148,7 +149,7 @@ class Encuesta extends Model
             : Surveys::ERR_IS_RUNNING_SURVEY_NOT_RUNNING
             ;
     }
-    /************************************************/
+    /************************************************
     public static function getByUuid($uuid) {
         return (
         $surveys = Surveys::where('uuid', '=', $uuid)
@@ -160,11 +161,11 @@ class Encuesta extends Model
             : null
             ;
     }
-    /************************************************/
+    /************************************************
     public static function getIdByUuid($uuid, $user_id) {
         return ($survey = self::getByOwner($uuid, $user_id)) ? $survey->id : null;
     }
-    /************************************************/
+    /************************************************
     public static function generateQuestionsNextVersion(Surveys $survey) {
         // If survey exists last_version will always exist
         $last_version = SurveysLastVersionsView::getById($survey->id);
@@ -184,7 +185,8 @@ class Encuesta extends Model
             ];
         }, Questions::getAllBySurveyIdUnpaginated($survey->id));
     }
-    /************************************************/
+    */
+    /************************************************//*
     public static function getVersions(Surveys $survey) {
         return array_map(function($version) use ($survey) {
             return [
@@ -194,7 +196,7 @@ class Encuesta extends Model
             ];
         }, range(1, SurveysLastVersionsView::getById($survey->id)->last_version));
     }
-    /************************************************/
+    /************************************************//*
     public static function getD3AnswersDataFromSurveyVersions($versions) {
         $survey_d3_data = array_map(function($version) {
             return [
@@ -212,7 +214,7 @@ class Encuesta extends Model
         });
         return $survey_d3_data;
     }
-    /************************************************/
+    /*************************************************
     public static function getD3DatesDataFromSurveyVersions($versions) {
         $tmp_d3_dates_data = array_reduce($versions, function($acc, $version) {
             $acc[$version['version']] = array_reduce($version['answers_sessions'], function($acc, $answer_session) {
@@ -239,7 +241,8 @@ class Encuesta extends Model
         endforeach;
         return $d3_dates_data;
     }
-    /************************************************/
+    /************************************************
+/*
     public static function getD3BrowsersDataFromSurveyVersions($versions) {
         return array_reduce($versions, function($acc, $version) {
             $acc[$version['version']] = array_reduce($version['answers_sessions'], function($acc, $answer_session) {
@@ -252,7 +255,8 @@ class Encuesta extends Model
             return $acc;
         }, []);
     }
-    /************************************************/
+*/
+    /************************************************//*
     public static function getD3PlatformDataFromSurveyVersions($versions) {
         return array_reduce($versions, function($acc, $version) {
             $acc[$version['version']] = array_reduce($version['answers_sessions'], function($acc, $answer_session) {
@@ -265,7 +269,7 @@ class Encuesta extends Model
             return $acc;
         }, []);
     }
-    /************************************************/
+    /************************************************//*
     public static function getSurveyByShareableLink($s_link) {
         return (
         $survey = self::where('shareable_link', '=', $s_link)->limit(1)->get()
@@ -276,3 +280,4 @@ class Encuesta extends Model
             ;
     }
 }
+*/
