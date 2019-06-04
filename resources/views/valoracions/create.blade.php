@@ -10,7 +10,7 @@
                     <div class="panel-body">
                         @include('flash::message')
 
-                        {!! Form::open(['route' => 'ambitos.store']) !!}
+                        {!! Form::open(['route' => 'valoracions.store']) !!}
                         <div class="form-group">
                             {!! Form::label('name', 'Tipo de la valoración') !!}
                             {!! Form::text('name',null,['class'=>'form-control', 'required', 'autofocus']) !!}
