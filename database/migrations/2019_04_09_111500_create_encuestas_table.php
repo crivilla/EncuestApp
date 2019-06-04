@@ -17,8 +17,6 @@ class CreateEncuestasTable extends Migration
             $table->dateTime('fechafinal');
             $table->unsignedInteger('ambito_id');
             $table->foreign('ambito_id')->references('id')->on('ambitos')->onDelete('cascade');
-
-            /*$table->enum('Ambito',['ProfesionalesMedicos', 'Instalaciones','Servcios','PersonalAAdministrativo']); */
         });
     }
 
