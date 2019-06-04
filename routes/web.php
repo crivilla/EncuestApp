@@ -23,8 +23,10 @@ Route::resource('encuestas', 'EncuestaController');
 Route::resource('ambitos', 'AmbitoController'); //
 Route::resource('preguntas', 'PreguntaController');
 Route::resource('respuestas', 'RespuestaController');
-Route::resource('pacientes', 'PacienteController'); //**
+Route::resource('valoracions', 'ValoracionController');
 
+
+Route::resource('pacientes', 'PacienteController'); //**
 
 
 Route::get('/home', 'HomeController@index')->name('home');

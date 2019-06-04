@@ -22,6 +22,8 @@
                             <select class="form-control" id="tipo_pregunta" name="tipo">
                                 <option value="valoracion0a5">Valoración numérica de 0 a 5</option>
                                 <option value="valoracion0a10">Valoración numérica de 0 a 10</option>
+                                <option value="tipocreado"> Tipo de valoración creado </option>
+
                             </select>
                         </div>
 

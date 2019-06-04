@@ -90,6 +90,12 @@
                                 </li>
 
                                 <li>
+                                    <a href="{{ url('/valoracions') }}">
+                                        Tipos de valoraciones
+                                    </a>
+                                </li>
+
+                                <li>
                                     <a href="{{ url('/pacientes') }}">
                                         Pacientes
                                     </a>
