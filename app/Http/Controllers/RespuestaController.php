@@ -8,7 +8,6 @@ use App\Pregunta;
 use App\Valoracion;
 
 
-
 class RespuestaController extends Controller
 {
     public function __construct()
@@ -29,6 +28,7 @@ class RespuestaController extends Controller
         return view('respuestas/create', ['preguntas'=>$preguntas]); //manda array a la vista
         */
         //
+
         $preguntas = Pregunta::all()->pluck('enunciado','id'); //array que asocia id con pregunta
         $valoracions = Valoracion::all()->pluck('name','id'); //array que asocia id con pregunta
         return view('respuestas/create', ['preguntas'=>$preguntas],['valoracions'=>$valoracions]); //manda array a la vista
@@ -65,7 +65,7 @@ class RespuestaController extends Controller
         $preguntas = Pregunta::all()->pluck('enunciado','id');
         return view('respuestas/edit',['respuesta'=> $respuesta, 'preguntas'=>$preguntas ]);
 
-        //
+        //---------------------------------------------------------------------------------------------------------------------
         $respuesta = Respuesta::find($id);
         $valoracions = Valoracion::all()->pluck('name','id');
         return view('respuestas/edit',['respuesta'=> $respuesta, 'valoracions'=>$valoracions ]);
@@ -75,7 +75,7 @@ class RespuestaController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'valoracion' => 'required|max:255',
+            /*'valoracion' => 'required|max:255',*/
             'pregunta_id' => 'required|exists:preguntas,id',
             'valoracion_id' => 'required|exists:valoracions,id'
 

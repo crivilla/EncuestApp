@@ -15,7 +15,7 @@
                         <div class="form-group">
                             {!!Form::label('pregunta_id', 'Pregunta a la que contesta la respuesta') !!}
                             <br>
-                            {!! Form::select('pregunta_id', $preguntas, ['class' => 'form-control', 'required']) !!}
+                            {!! Form::select('pregunta_id', $preguntas, ['class' => 'form-control'/*, 'required'*/]) !!}
                         </div>
 
                         <div class="form-group">
@@ -24,6 +24,7 @@
                             {!! Form::select('valoracion_id', $valoracions, ['class' => 'form-control'/*, 'required'*/]) !!}
                         </div>
 
+                        <!--
                         <div class="form-group">
                             <label name= "valoracion" for="valoracion_respuesta"> Tipo de la pregunta </label>
                             <select class="form-control" id="valoracion_respuesta" name="tipo">
@@ -40,7 +41,7 @@
                                 <option value="10"> 10 </option>
                             </select>
                         </div>
-
+                            -->
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 
                         {!! Form::close() !!}

@@ -12,12 +12,12 @@ class CreateRespuestasTable extends Migration
         Schema::create('respuestas', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->unsignedInteger('pregunta_id');
+            $table->unsignedInteger('pregunta_id')->references('id')->on('preguntas')->onDelete('cascade');;
 
             /*$table->enum('valoracion',['0','1','2','3','4','5','6','7','8','9',10]);*/
 
             $table->unsignedInteger('valoracion_id');
-            *$table->foreign('valoracion_id')->references('id')->on('valoracions')->onDelete('cascade');
+            $table->foreign('valoracion_id')->references('id')->on('valoracions')->onDelete('cascade');
         });
     }
 

@@ -29,7 +29,7 @@
 
                                 <tr>
                                     <td>{{ $respuesta->pregunta->enunciado }}</td>
-                                   <<td>{{ $respuesta->valoracion->name }}</td>
+                                    <td>{{ $respuesta->valoracion->name }}</td>
 
                                     <td>
                                         {!! Form::open(['route' => ['respuestas.edit',$respuesta->id], 'method' => 'get']) !!}
