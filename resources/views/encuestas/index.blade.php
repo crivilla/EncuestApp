@@ -18,8 +18,8 @@
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th>Título</th>
-                                <th>FechaInicio</th>
-                                <th>FechaFinal</th>
+                                <th>Disponible desde</th>
+                                <th>Disponible hasta</th>
                                 <th>Ambito</th>
                                 <th colspan="2">Acciones</th>
 

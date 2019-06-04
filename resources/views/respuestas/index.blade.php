@@ -18,7 +18,7 @@
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th>Pregunta a la que responde</th>
-                                <th> Valoración </th>
+                                <th> Respuesta dada </th>
 
                                 <th colspan="2">Acciones</th>
 
@@ -28,8 +28,8 @@
 
 
                                 <tr>
-                                    <td>{{ $respuesta->pregunta->enunciado}}</td>
-                                    <td>{{ $respuesta->valoracion}}</td>
+                                    <td>{{ $respuesta->pregunta->enunciado }}</td>
+                                   <<td>{{ $respuesta->valoracion->name }}</td>
 
                                     <td>
                                         {!! Form::open(['route' => ['respuestas.edit',$respuesta->id], 'method' => 'get']) !!}

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Respuesta;
 use Illuminate\Http\Request;
 use App\Pregunta;
+use App\Valoracion;
+
 
 
 class RespuestaController extends Controller
@@ -21,17 +23,27 @@ class RespuestaController extends Controller
     }
 
     public function create()
-    {
+    {   /*
         //Listar todos los preguntas que existen para que un usuario pueda elegir
         $preguntas = Pregunta::all()->pluck('enunciado','id'); //array que asocia id con pregunta
         return view('respuestas/create', ['preguntas'=>$preguntas]); //manda array a la vista
+        */
+        //
+        $preguntas = Pregunta::all()->pluck('enunciado','id'); //array que asocia id con pregunta
+        $valoracions = Valoracion::all()->pluck('name','id'); //array que asocia id con pregunta
+        return view('respuestas/create', ['preguntas'=>$preguntas],['valoracions'=>$valoracions]); //manda array a la vista
+
+        //
+
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
-            'valoracion' => 'required|max:255',
-            'pregunta_id' => 'required|exists:preguntas,id'
+            /*'valoracion' => 'required|max:255',*/
+            'pregunta_id' => 'required|exists:preguntas,id',
+            'valoracion_id' => 'required|exists:valoracions,id'
+
         ]);
 
         $respuesta = new Respuesta($request->all());
@@ -52,13 +64,21 @@ class RespuestaController extends Controller
         $respuesta = Respuesta::find($id);
         $preguntas = Pregunta::all()->pluck('enunciado','id');
         return view('respuestas/edit',['respuesta'=> $respuesta, 'preguntas'=>$preguntas ]);
+
+        //
+        $respuesta = Respuesta::find($id);
+        $valoracions = Valoracion::all()->pluck('name','id');
+        return view('respuestas/edit',['respuesta'=> $respuesta, 'valoracions'=>$valoracions ]);
+        //
     }
 
     public function update(Request $request, $id)
     {
         $this->validate($request, [
             'valoracion' => 'required|max:255',
-            'pregunta_id' => 'required|exists:preguntas,id'
+            'pregunta_id' => 'required|exists:preguntas,id',
+            'valoracion_id' => 'required|exists:valoracions,id'
+
         ]);
 
         $respuesta = Respuesta::find($id);

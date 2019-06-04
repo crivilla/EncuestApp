@@ -145,7 +145,7 @@ class EncuestaController extends Controller
         return redirect()->route('dashboard');
         */
     }
-
+/*
     //-----------
     public function validateSurvey(Request $request) {
         $this->validate($request, [
@@ -207,7 +207,7 @@ class EncuestaController extends Controller
      * Shows the statistics page of a given survey.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ /*
     public function stats($s_uuid, Request $request) {
         $survey = Surveys::getByOwner($s_uuid, $request->user()->id);
         if(!$survey):
@@ -303,6 +303,6 @@ class EncuestaController extends Controller
             'd3_dates_data' => json_encode($d3_dates_data)
         ]);
     }
-
+*/
     //-----------
 }

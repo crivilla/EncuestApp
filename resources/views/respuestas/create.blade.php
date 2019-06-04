@@ -19,6 +19,13 @@
                         </div>
 
                         <div class="form-group">
+                            {!!Form::label('valoracion_id', 'Valoracion para esta pregunta') !!}
+                            <br>
+                            {!! Form::select('valoracion_id', $valoracions, ['class' => 'form-control'/*, 'required'*/]) !!}
+                        </div>
+
+                        <!--
+                        <div class="form-group">
                             <label name= "valoracion" for="valoracion_respuesta"> Valoración </label>
                             <select class="form-control" id="valoracion_respuesta" name="tipo">
                                 <option value="0"> 0 </option>
@@ -34,6 +41,7 @@
                                 <option value="10"> 10 </option>
                             </select>
                         </div>
+                        -->
 
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 
