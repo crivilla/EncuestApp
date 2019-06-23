@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Pregunta;
 use Illuminate\Http\Request;
 use App\Encuesta;
+use Illuminate\Support\Facades\Input;
 
 class PreguntaController extends Controller
 {
@@ -19,20 +20,19 @@ class PreguntaController extends Controller
         return view('preguntas/index',['preguntas'=>$preguntas]);
     }
 
+    public function crear($id)    {
+
+        return view('preguntas/create', ['id'=> $id]); //manda array a la vista**/
+    }
     public function create()
     {
-        //Listar todos los tipos de preguntas que existen para que el usuario pueda elegir
-
-        $encuestas = Encuesta::all()->pluck('titulo','id');
-        return view('preguntas/create', ['encuestas'=>$encuestas]); //manda array a la vista**/
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
             'enunciado' => 'required|max:255',
-            'tipo' => 'required|max:255',
-            'encuesta_id' => 'required|exists:encuestas,id'
+            'tipo' => 'required|max:255'
         ]);
 
         $pregunta = new Pregunta($request->all());
@@ -40,7 +40,7 @@ class PreguntaController extends Controller
 
         flash('Pregunta creada correctamente');
 
-        return redirect()->route('preguntas.index');
+        return redirect()->route('encuestas.edit', ["id" => $pregunta->encuesta_id]);
     }
 
     public function show(Pregunta $pregunta)
@@ -51,8 +51,8 @@ class PreguntaController extends Controller
     public function edit($id)
     {
         $pregunta = Pregunta::find($id);
-        $encuestas = Encuesta::all()->pluck('titulo','id', 'ambito_id', 'fechainicio', 'fechafinal');
-        return view('preguntas/edit',['pregunta'=> $pregunta, 'encuestas'=>$encuestas ]);
+
+        return view('preguntas/edit',['pregunta'=> $pregunta]);
     }
 
     public function update(Request $request, $id)
@@ -70,14 +70,16 @@ class PreguntaController extends Controller
 
         flash('Pregunta modificada correctamente');
 
-        return redirect()->route('preguntas.index');
+        return redirect()->route('encuestas.edit', ["id" => $pregunta->encuesta_id]);
     }
 
     public function destroy($id)
     {
+
         $pregunta = Pregunta::find($id);
+        $encuesta_id = $pregunta->encuesta_id;
         $pregunta->delete();
         flash('Pregunta borrada correctamente');
-        return redirect()->route('preguntas.index');
+        return redirect()->route('encuestas.edit', ["id" => $encuesta_id]);
     }
 }

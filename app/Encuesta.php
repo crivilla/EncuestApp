@@ -88,12 +88,12 @@ class Encuesta extends Model
 
 
 
-
     ///--- change Surveys to Encuesta
     ///
     const ERR_RUN_SURVEY_OK = 0;
     const ERR_RUN_SURVEY_NOT_FOUND = 1;
-    const ERR_RUN_SURVEY_INVALID_STATUS = 2;
+    const ERR_RUN_SURVEY_INV
+ALID_STATUS = 2;
     const ERR_RUN_SURVEY_ALREADY_RUNNING = 3;
     public static function run($uuid, $user_id) {
         $encuesta = Encuesta::getByOwner($uuid, $user_id);

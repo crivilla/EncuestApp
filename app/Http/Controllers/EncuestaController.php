@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Encuesta;
+use App\Pregunta;
 use Illuminate\Http\Request;
 use App\Ambito;
 
@@ -20,6 +21,23 @@ class EncuestaController extends Controller
     {
         $this->middleware('auth');
     }
+
+
+    public function responder($id){
+        $encuesta = Encuesta::find($id);
+        $preguntas = Pregunta::where('encuesta_id',$id)->get();
+        return view('encuestas/responder',['encuesta'=> $encuesta,'preguntas'=>$preguntas ]);
+    }
+    public function resultados(Request $request){
+        $encuesta_id = $request ->get('encuesta_id');
+        $encuesta = Encuesta::find($encuesta_id);
+        $preguntas = Pregunta::where('encuesta_id',$encuesta_id)->get();
+        foreach($preguntas as $pregunta){
+            $pregunta->value = $request->get($pregunta->id);
+        }
+        return view('encuestas/resultados',['preguntas'=>$preguntas,'encuesta'=>$encuesta]);
+    }
+
 
     public function index()
     {
@@ -47,7 +65,7 @@ class EncuestaController extends Controller
         $encuesta->save();
 
         flash('Encuesta creada correctamente');
-        return redirect()->route('encuestas.index');
+        return redirect()->route('encuestas.edit', ['id' => $encuesta->id] );
         // return redirect()->route('survey.edit', $survey->uuid);
 
         /*
@@ -65,14 +83,17 @@ class EncuestaController extends Controller
 
     public function show(Encuesta $encuesta)
     {
-        //
+        $pregunta = Pregunta::where('encuesta_id', $encuesta ->id);
+
+
     }
 
     public function edit($id) /*($uuid, Request $request)*/
     {
         $encuesta = Encuesta::find($id);
         $ambitos = Ambito::all()->pluck('name','id');
-        return view('encuestas/edit',['encuesta'=> $encuesta, 'ambitos'=>$ambitos ]);
+        $preguntas = Pregunta::where('encuesta_id',$id)->get();
+        return view('encuestas/edit',['encuesta'=> $encuesta, 'ambitos'=>$ambitos,'preguntas'=>$preguntas ]);
 
         /*
         $survey = Surveys::getByOwner($uuid, $request->user()->id);
@@ -85,7 +106,6 @@ class EncuestaController extends Controller
             'survey' => $survey,
             'questions' => Questions::getAllBySurveyIdPaginated($survey->id)
         ]);*/
-
 
     }
 

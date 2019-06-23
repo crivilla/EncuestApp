@@ -16,6 +16,11 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('preguntas/crear/{id}', 'PreguntaController@crear')->name('preguntas.crear');
+
+Route::get('encuestas/responder/{id}', 'EncuestaController@responder')->name('encuestas.responder');
+
+Route::post('encuestas/resultados', 'EncuestaController@resultados')->name('encuestas.resultados');
 
 //existe una entidad/recurso Encuesta que es atendida por un controlador concreto (EncuestaController)
 Route::resource('medicos', 'MedicoController'); //solamente accesibles por aquellos usuarios autenticados

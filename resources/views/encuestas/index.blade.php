@@ -21,7 +21,7 @@
                                 <th>Disponible desde</th>
                                 <th>Disponible hasta</th>
                                 <th>Ambito</th>
-                                <th colspan="2">Acciones</th>
+                                <th colspan="3">Acciones</th>
 
                             </tr>
 
@@ -37,6 +37,11 @@
                                     <td>
                                         {!! Form::open(['route' => ['encuestas.edit',$encuesta->id], 'method' => 'get']) !!}
                                         {!!   Form::submit('Editar', ['class'=> 'btn btn-warning'])!!}
+                                        {!! Form::close() !!}
+                                    </td>
+                                    <td>
+                                        {!! Form::open(['route' => ['encuestas.responder',$encuesta->id], 'method' => 'get']) !!}
+                                        {!!   Form::submit('Responder', ['class'=> 'btn btn-warning'])!!}
                                         {!! Form::close() !!}
                                     </td>
                                     <td>
