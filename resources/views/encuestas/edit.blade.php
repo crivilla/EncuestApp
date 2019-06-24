@@ -29,16 +29,21 @@
 
                         <div class="form-group">
                             {!!Form::label('ambito_id', 'Ámbito de la encuesta') !!}
-                            <br>
+
                             {!! Form::select('ambito_id', $ambitos, ['class' => 'form-control', 'required']) !!}
                         </div>
 
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
+                        {!! Form::close() !!}
 
-                        {!! Form::close() !!}
+                        <br>
+
+                        <div class="form-group">
                         {!! Form::open(['route' => ['preguntas.crear','id'=> $encuesta->id], 'method' => 'get']) !!}
-                        {!!   Form::submit('Añadir', ['class'=> 'btn btn-warning'])!!}
+                        {!!   Form::submit('Añadir pregunta', ['class'=> 'btn btn-warning'])!!}
                         {!! Form::close() !!}
+                        </div>
+
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th>Enunciado</th>

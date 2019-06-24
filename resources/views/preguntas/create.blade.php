@@ -11,8 +11,7 @@
                         @include('flash::message')
 
                         {!! Form::open(['route' =>'preguntas.store']) !!}
-                        <?php echo "id:"?>
-                        <?php echo $id?>
+
                         <div class="form-group">
                             {!! Form::label('encuesta_id', 'Identificador de la encuesta') !!}
                             {!! Form::text('encuesta_id',$id,['class'=>'form-control', 'readonly']) !!}

@@ -17,7 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('preguntas/crear/{id}', 'PreguntaController@crear')->name('preguntas.crear');
-
 Route::get('encuestas/responder/{id}', 'EncuestaController@responder')->name('encuestas.responder');
 
 Route::post('encuestas/resultados', 'EncuestaController@resultados')->name('encuestas.resultados');

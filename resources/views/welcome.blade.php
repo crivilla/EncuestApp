@@ -89,10 +89,10 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://appmazinghealth.test/encuestas"> Encuesta </a>
+                    <a href="https://appmazinghealth.test/encuestas"> Encuestas </a>
                     <a href="https://appmazinghealth.test/medicos"> Médicos</a>
                     <a href="https://appmazinghealth.test/ambitos"> Ámbitos </a>
-                    <a href="https://appmazinghealth.test/pacientes"> Pacientes </a>
+                    <!--<a href="https://appmazinghealth.test/pacientes"> Pacientes </a> -->
 
                     <h3> Diseñe cuestionarios personalizados y obtenga información útil sobre el grado de satisfacción de sus pacientes.  </h3>
 

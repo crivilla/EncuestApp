@@ -77,30 +77,19 @@
                                     </a>
                                 </li>
 
-                                <li>
-                                    <a href="{{ url('/preguntas') }}">
-                                        Preguntas
-                                    </a>
-                                </li>
-
+                            <!--
                                 <li>
                                     <a href="{{ url('/respuestas') }}">
                                         Respuestas
                                     </a>
                                 </li>
 
-                                <li>
-                                    <a href="{{ url('/valoracions') }}">
-                                        Tipos de valoraciones
-                                    </a>
-                                </li>
 
                                 <li>
                                     <a href="{{ url('/pacientes') }}">
                                         Pacientes
                                     </a>
-                                </li>
-
+                                </li> -->
                                 <li>
                                     <a href="{{ url('/logout') }}"
                                        onclick="event.preventDefault();

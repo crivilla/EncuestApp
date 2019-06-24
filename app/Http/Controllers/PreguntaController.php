@@ -22,7 +22,7 @@ class PreguntaController extends Controller
 
     public function crear($id)    {
 
-        return view('preguntas/create', ['id'=> $id]); //manda array a la vista**/
+        return view('preguntas/create', ['id'=> $id]);
     }
     public function create()
     {
